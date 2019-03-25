@@ -1,1 +1,1 @@
-alias clouddrive=cd "~/Library/Mobile\ Documents/com\~apple\~CloudDocs/logs"
+clouddrive=~/Library/Mobile\ Documents/com\~apple\~CloudDocs

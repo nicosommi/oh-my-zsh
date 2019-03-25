@@ -24,8 +24,8 @@ push-my-tools() {
 load-my-tools() {
   if stat $tools 1>/dev/null 2>&1; then
     pushd $tools > /dev/null
-    ./init.zsh
-    popd > /dev/null
+    source init.zsh
+    popd 1>/dev/null 2>&1
   fi
 }
 
