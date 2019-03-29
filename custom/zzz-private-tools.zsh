@@ -11,6 +11,16 @@ clone-my-tools() {
   fi
 }
 
+update-my-tools() {
+  if stat $tools 1>/dev/null 2>&1; then
+    pushd $tools > /dev/null
+    git pull origin master 1>/dev/null 2>&1
+    echo "Tools up to date."
+    load-my-tools
+    popd 1>/dev/null 2>&1
+  fi
+}
+
 push-my-tools() {
   pushd $tools
   git add .
@@ -29,5 +39,4 @@ load-my-tools() {
   fi
 }
 
-# call init
-load-my-tools
+update-my-tools
