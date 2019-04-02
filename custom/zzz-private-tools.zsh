@@ -14,9 +14,10 @@ clone-my-tools() {
 update-my-tools() {
   if stat $tools 1>/dev/null 2>&1; then
     pushd $tools > /dev/null
-    git pull origin master 1>/dev/null 2>&1
+    git pull --rebase --stat origin master 1>/dev/null 2>&1
     echo "Tools up to date."
     load-my-tools
+    install-js-tools
     popd 1>/dev/null 2>&1
   fi
 }
@@ -39,4 +40,11 @@ load-my-tools() {
   fi
 }
 
-update-my-tools
+init() {
+  load-my-tools
+  copy-to-clipboard "update-my-tools"
+  echo "Remember to execute update-my-tools once in a while (copied to clipboard)"
+}
+
+init
+
