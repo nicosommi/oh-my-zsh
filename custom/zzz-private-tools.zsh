@@ -42,8 +42,7 @@ load-my-tools() {
 
 init() {
   load-my-tools
-  copy-to-clipboard "update-my-tools"
-  echo "Remember to execute update-my-tools once in a while (copied to clipboard)"
+  echo "Remember to execute update-my-tools once in a while"
 }
 
 init
