@@ -19,10 +19,13 @@ brave-pwa() {
 }
 
 code-pwa() {
-  local wd=${$(pwd)//\//\_}
+  local port=""
   pushd $1
-  docker run -d $2 -p 23000:3000 -v "$(pwd):/home/project:cached" --name "code-$wd" theiaide/theia:next
-  brave-pwa http://localhost:23000
+  local wd=${$(pwd)//\//\_}
+  local name="code-$wd"
+  docker run -d $2 -p $port:3000 -v "$(pwd):/home/project:cached" --name $name theiaide/theia:next
+  local finalPort=$(docker inspect --format='{{(index (index .NetworkSettings.Ports "3000/tcp") 0).HostPort}}' $name)
+  brave-pwa http://localhost:$finalPort
   popd
 }
 
