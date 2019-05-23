@@ -14,7 +14,7 @@ remember-passphrase-per-session() {
   $text_editor ~/.ssh/config
 }
 
-brave-pwa() {
+brave-app() {
   $brave --app=$1
 }
 
@@ -25,10 +25,18 @@ code-pwa() {
   local name="code-$wd"
   docker run -d $2 -p $port:3000 -v "$(pwd):/home/project:cached" --name $name theiaide/theia:next
   local finalPort=$(docker inspect --format='{{(index (index .NetworkSettings.Ports "3000/tcp") 0).HostPort}}' $name)
-  brave-pwa http://localhost:$finalPort
+  brave-app http://localhost:$finalPort
   popd
 }
 
 code-pwa-rm() {
   code-pwa $1 --rm
+}
+
+telegram() {
+  brave-app https://web.telegram.org/
+}
+
+code-sandbox() {
+  brave-app https://codesandbox.io/
 }
