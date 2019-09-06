@@ -1,5 +1,13 @@
 # requires { sure } from 00aa-lib.zsh
 
+list-all-docker-orphan-volumes() {
+  docker volume ls -qf dangling=true
+}
+
+remove-all-docker-orphan-volumes() {
+  docker volume rm $(docker volume ls -qf dangling=true)
+}
+
 remove-all-docker-containers() {
   sure
   docker rm $(docker ps -a -q)
