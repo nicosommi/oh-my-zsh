@@ -42,7 +42,7 @@ load-my-tools() {
 
 init() {
   load-my-tools
-  echo "Remember to execute update-my-tools once in a while"
+  echo "."
 }
 
 init
